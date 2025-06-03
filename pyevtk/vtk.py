@@ -438,7 +438,7 @@ class VtkFile:
         """
         self.xml.closeElement(nodeType + "Data")
 
-    def openGrid(self, start=None, end=None, origin=None, spacing=None):
+    def openGrid(self, start=None, end=None, origin=None, spacing=None, direction=None):
         """
         Open grid section.
 
@@ -476,6 +476,7 @@ class VtkFile:
                 WholeExtent=ext,
                 Origin=_array_to_string(origin),
                 Spacing=_array_to_string(spacing),
+                Direction=_array_to_string(direction),
             )
 
         elif gType in [VtkStructuredGrid.name, VtkRectilinearGrid.name]:

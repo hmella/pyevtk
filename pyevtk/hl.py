@@ -141,6 +141,7 @@ def imageToVTK(
     path,
     origin=(0.0, 0.0, 0.0),
     spacing=(1.0, 1.0, 1.0),
+    direction=(1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0),
     cellData=None,
     pointData=None,
     fieldData=None,
@@ -222,7 +223,7 @@ def imageToVTK(
 
     # Write data to file
     w = VtkFile(path, VtkImageData)
-    w.openGrid(start=start, end=end, origin=origin, spacing=spacing)
+    w.openGrid(start=start, end=end, origin=origin, spacing=spacing, direction=direction)
     w.openPiece(start=start, end=end)
     _addDataToFile(w, cellData, pointData, fieldData)
     w.closePiece()
